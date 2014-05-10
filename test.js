@@ -1,19 +1,5 @@
-git-stateless-push
-==================
-
-Make it easy to build a push-to git server that doesn't keep record of the repository.
-
-### Installation
-
-```
-$ npm install git-stateless-push
-```
-
-### Example
-
-```js
 var express = require("express");
-var GitPush = require("git-stateless-push");
+var GitPush = require("./");
 
 // Create the http application
 var app = express();
@@ -39,4 +25,3 @@ app.use('/:author/:repo.git', router);
 var server = app.listen(3000, function() {
     console.log('Listening on port %d', server.address().port);
 });
-```
