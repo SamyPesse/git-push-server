@@ -44,6 +44,12 @@ var server = app.listen(3000, function() {
 });
 ```
 
+You can now run from a git repository:
+
+```
+$ git push http://localhost:3000/test/test.git master
+```
+
 ### Authentication
 
 You need to override ```GitPush.prototype.authenticate(infos)``` to make authentication work. It should return a **boolean** or a **promise** for async authentication.
