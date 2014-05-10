@@ -6,7 +6,9 @@ var path = require("path");
 var app = express();
 
 // Create the git-push server
-var git = new GitPush();
+var git = new GitPush({
+    debug: true
+});
 
 // Create a router for the git-push server
 var router = express.Router();
