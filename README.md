@@ -78,22 +78,12 @@ git.authenticate = function(infos) {
 };
 ```
 
-### Multi-processes server
-
-If your application run on a multi-process server (for example with more than one dyno on heroku). You need to save the bare repositories cache in a database.
-You need to override `bareSet` and `bareGet`, these methods can be async by returning promises.
+### Options
 
 ```js
-git.bareSet = function(repoId, path) {
-    // save the path in database
-};
-
-
-git.bareGet = function(repoId) {
-    // return the path from database
-};
-
-git.bareDel = function(repoId) {
-    // remove this bare repository from the index
-};
+var git = new GitPush(options);
 ```
+
+`options.debug`: enable log messages (default false)
+`options.root`: root directory for the repositories (default os.tmpdir)
+
