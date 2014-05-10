@@ -12,10 +12,14 @@
     "devDependencies": {
         "express": "4.1.2"
     },
-    "homepage": "https://github.com/SamyPesse/git-stateless-push",
+    "homepage": "https://github.com/SamyPesse/git-push-server",
     "author": "Samy Pessé <samypesse@gmail.com>",
     "license": "Apache 2",
     "bugs": {
-        "url": "https://github.com/SamyPesse/git-stateless-push/issues"
+        "url": "https://github.com/SamyPesse/git-push-server/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SamyPesse/git-push-server.git"
     }
 }
