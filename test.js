@@ -1,4 +1,4 @@
-var GitPush = require("./");
+var GitPush = require("./lib");
 var express = require("express");
 var path = require("path");
 
@@ -15,7 +15,6 @@ var router = express.Router();
 git.start(router);
 
 git.authenticate = function() { return true; };
-git.repository = function() { return path.join(__dirname, "testgit"); };
 
 // Bind the router to the app
 app.use('/:author/:repo.git', function(req, res, next) {
