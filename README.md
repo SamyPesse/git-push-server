@@ -1,4 +1,4 @@
-git-stateless-push
+GIT Stateless Push Server
 ==================
 
 This node module makes it easy to build a stateless git-push server, to build stuff like heroku or gitbook.io without keeping the repositories content.
