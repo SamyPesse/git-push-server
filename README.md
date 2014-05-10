@@ -28,8 +28,6 @@ var router = express.Router();
 // Start the git server on the router
 git.start(router);
 
-git.authenticate = function() { return true; };
-
 // Bind the router to the app
 app.use('/:author/:repo.git', function(req, res, next) {
     // Needed to identify the repository
@@ -50,9 +48,25 @@ You can now run from a git repository:
 $ git push http://localhost:3000/test/test.git master
 ```
 
+### Run an operation on each push
+
+If you need to run an operation on the folder resulting from the push, you need to override ```push```. For async operaiton, this method can return a **promise**.
+
+```js
+git.push = function(pushInfos) {
+    // pushInfos.repoId
+    // pushInfos.auth.username
+    // pushInfos.auth.password
+    // pushInfos.content
+    // pushInfos.bare
+
+    // do some build or deployment operation
+};
+```
+
 ### Authentication
 
-You need to override ```GitPush.prototype.authenticate(infos)``` to make authentication work. It should return a **boolean** or a **promise** for async authentication.
+You need to override ```authenticate``` to make authentication work. It should return a **boolean** or a **promise** for async authentication.
 
 ```js
 git.authenticate = function(infos) {
@@ -77,5 +91,9 @@ git.bareSet = function(repoId, path) {
 
 git.bareGet = function(repoId) {
     // return the path from database
+};
+
+git.bareDel = function(repoId) {
+    // remove this bare repository from the index
 };
 ```
