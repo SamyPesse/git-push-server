@@ -1,18 +1,18 @@
-GIT Stateless Push Server
+GIT-Push Server
 ==================
 
-This node module makes it easy to build a stateless git-push server, to build stuff like heroku or gitbook.io without keeping the repositories content.
+This node module makes it easy to build an HTTP stateless git-push server, to build stuff like Heroku or GitBook.io without keeping the repositories content.
 
 ### Installation
 
 ```
-$ npm install git-stateless-push
+$ npm install git-push-server
 ```
 
 ### Example
 
 ```js
-var GitPush = require("git-stateless-push");
+var GitPush = require("git-push-server");
 var express = require("express");
 var path = require("path");
 
