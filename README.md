@@ -1,7 +1,7 @@
 git-stateless-push
 ==================
 
-Make it easy to build a push-to git server that doesn't keep record of the repository.
+This node module makes it easy to build a stateless git-push server, to build stuff like heroku or gitbook.io without keeping the repositories content.
 
 ### Installation
 
