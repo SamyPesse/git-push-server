@@ -1,5 +1,6 @@
-var express = require("express");
 var GitPush = require("./");
+var express = require("express");
+var path = require("path");
 
 // Create the http application
 var app = express();
@@ -12,6 +13,9 @@ var router = express.Router();
 
 // Start the git server on the router
 git.start(router);
+
+git.authenticate = function() { return true; };
+git.repository = function() { return path.join(__dirname, "testgit"); };
 
 // Bind the router to the app
 app.use('/:author/:repo.git', function(req, res, next) {

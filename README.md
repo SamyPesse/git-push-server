@@ -12,8 +12,9 @@ $ npm install git-stateless-push
 ### Example
 
 ```js
-var express = require("express");
 var GitPush = require("git-stateless-push");
+var express = require("express");
+var path = require("path");
 
 // Create the http application
 var app = express();
@@ -27,6 +28,9 @@ var router = express.Router();
 // Start the git server on the router
 git.start(router);
 
+git.authenticate = function() { return true; };
+git.repository = function() { return path.join(__dirname, "testgit"); };
+
 // Bind the router to the app
 app.use('/:author/:repo.git', function(req, res, next) {
     // Needed to identify the repository
@@ -39,4 +43,18 @@ app.use('/:author/:repo.git', router);
 var server = app.listen(3000, function() {
     console.log('Listening on port %d', server.address().port);
 });
+```
+
+### Authentication
+
+You need to override ```GitPush.prototype.authenticate(infos)``` to make authentication work. It should return a **boolean** or a **promise** for async authentication.
+
+```js
+git.authenticate = function(infos) {
+    // infos.repoId -> repository id set with in req.repoID
+    // infos.username
+    // infos.password
+
+    return doSomethingWithDatabase(infos.username, infos.password, infos.repoId);
+};
 ```
