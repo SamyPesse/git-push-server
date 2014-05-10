@@ -57,3 +57,19 @@ git.authenticate = function(infos) {
     return doSomethingWithDatabase(infos.username, infos.password, infos.repoId);
 };
 ```
+
+### Multi-processes server
+
+If your application run on a multi-process server (for example with more than one dyno on heroku). You need to save the bare repositories cache in a database.
+You need to override `bareSet` and `bareGet`, these methods can be async by returning promises.
+
+```js
+git.bareSet = function(repoId, path) {
+    // save the path in database
+};
+
+
+git.bareGet = function(repoId) {
+    // return the path from database
+};
+```
