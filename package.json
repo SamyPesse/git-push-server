@@ -2,7 +2,7 @@
     "name": "git-push-server",
     "description": "Make it easy to build an HTTP stateless git-push server",
     "main": "lib/index.js",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "dependencies": {
         "q": "1.0.1",
         "lodash": "2.4.1",
